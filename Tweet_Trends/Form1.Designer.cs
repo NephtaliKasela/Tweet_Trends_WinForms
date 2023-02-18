@@ -31,6 +31,8 @@
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,26 +59,36 @@
             this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapControl1.ShowTileGridLines = false;
-            this.gMapControl1.Size = new System.Drawing.Size(847, 691);
+            this.gMapControl1.Size = new System.Drawing.Size(395, 691);
             this.gMapControl1.TabIndex = 0;
             this.gMapControl1.Zoom = 0D;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.listBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 691);
+            this.panel1.Size = new System.Drawing.Size(710, 691);
             this.panel1.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.gMapControl1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(258, 0);
+            this.panel2.Location = new System.Drawing.Point(710, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(847, 691);
+            this.panel2.Size = new System.Drawing.Size(395, 691);
             this.panel2.TabIndex = 2;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(33, 53);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(620, 584);
+            this.listBox1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -87,6 +99,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -97,5 +110,6 @@
         private GMap.NET.WindowsForms.GMapControl gMapControl1;
         private Panel panel1;
         private Panel panel2;
+        private ListBox listBox1;
     }
 }

@@ -8,13 +8,14 @@ namespace Tweet_Trends
         public Form1()
         {
             InitializeComponent();
-
+            Test();
             
         }
 
         public void Test()
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
+            listBox1.Items.Add("Hello World!");
             Tweet_Repository Tweets = new Tweet_Repository();
             List<Tweet> twt = Tweets.ReadTweets("family_tweets2014.txt");
             //Console.WriteLine($"{twt.Count}");
@@ -23,14 +24,16 @@ namespace Tweet_Trends
 
             Sentiment_Repository sentiments = new Sentiment_Repository();
             List<Sentiment> sentmt = sentiments.ReadSentiments("sentiments.csv");
-            Console.WriteLine($"{sentmt.Count}");
+            //Console.WriteLine($"{sentmt.Count}");
+            listBox1.Items.Add(sentmt.Count.ToString());
 
             Check_Sentiment chkSentiment = new Check_Sentiment();
             chkSentiment.Check(twt, sentmt);
 
             foreach (Tweet t in twt)
             {
-                Console.WriteLine($"{t.Sentiment}");
+                //Console.WriteLine($"{t.Sentiment}");
+                listBox1.Items.Add(t.Sentiment.ToString());
             }
 
             //States_Coordinates_Repository coor = new States_Coordinates_Repository();
