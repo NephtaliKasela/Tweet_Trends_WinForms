@@ -1,5 +1,6 @@
 using BusinessLogic;
 using DataAccess;
+using GMap.NET.MapProviders;
 
 namespace Tweet_Trends
 {
@@ -8,7 +9,7 @@ namespace Tweet_Trends
         public Form1()
         {
             InitializeComponent();
-            Test();
+            //Test();
             
         }
 
@@ -50,6 +51,18 @@ namespace Tweet_Trends
             //    }
             //    Console.WriteLine($"-------------------------");
             //}
+        }
+
+        private void btnLoadIntoMap_Click(object sender, EventArgs e)
+        {
+            gmcMap.DragButton = MouseButtons.Left;
+            gmcMap.MapProvider = GMapProviders.GoogleMap;
+            double lat = Convert.ToDouble(txtbxLatitude.Text); ;
+            double longt = Convert.ToDouble(txtbxLongitude.Text);
+            gmcMap.Position = new GMap.NET.PointLatLng(lat, longt);
+            gmcMap.MinZoom = 5;
+            gmcMap.MaxZoom = 100;
+            gmcMap.Zoom = 10;
         }
     }
 }
