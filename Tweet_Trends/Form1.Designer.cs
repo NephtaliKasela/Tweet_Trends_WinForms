@@ -30,13 +30,16 @@
         {
             this.gmcMap = new GMap.NET.WindowsForms.GMapControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtbxLatitude = new System.Windows.Forms.TextBox();
+            this.btnLoadIntoMap = new System.Windows.Forms.Button();
             this.txtbxLongitude = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnLoadIntoMap = new System.Windows.Forms.Button();
+            this.txtbxLatitude = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAddPoint = new System.Windows.Forms.Button();
+            this.btnGetRoute = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +73,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnClear);
+            this.panel1.Controls.Add(this.btnGetRoute);
+            this.panel1.Controls.Add(this.btnAddPoint);
             this.panel1.Controls.Add(this.btnLoadIntoMap);
             this.panel1.Controls.Add(this.txtbxLongitude);
             this.panel1.Controls.Add(this.label2);
@@ -81,6 +87,48 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(202, 691);
             this.panel1.TabIndex = 1;
+            // 
+            // btnLoadIntoMap
+            // 
+            this.btnLoadIntoMap.Location = new System.Drawing.Point(27, 248);
+            this.btnLoadIntoMap.Name = "btnLoadIntoMap";
+            this.btnLoadIntoMap.Size = new System.Drawing.Size(136, 37);
+            this.btnLoadIntoMap.TabIndex = 5;
+            this.btnLoadIntoMap.Text = "Load";
+            this.btnLoadIntoMap.UseVisualStyleBackColor = true;
+            this.btnLoadIntoMap.Click += new System.EventHandler(this.btnLoadIntoMap_Click);
+            // 
+            // txtbxLongitude
+            // 
+            this.txtbxLongitude.Location = new System.Drawing.Point(9, 161);
+            this.txtbxLongitude.Name = "txtbxLongitude";
+            this.txtbxLongitude.Size = new System.Drawing.Size(184, 27);
+            this.txtbxLongitude.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(9, 130);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(139, 28);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Longitude";
+            // 
+            // txtbxLatitude
+            // 
+            this.txtbxLatitude.Location = new System.Drawing.Point(12, 83);
+            this.txtbxLatitude.Name = "txtbxLatitude";
+            this.txtbxLatitude.Size = new System.Drawing.Size(184, 27);
+            this.txtbxLatitude.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Latitude";
             // 
             // listBox1
             // 
@@ -101,47 +149,35 @@
             this.panel2.Size = new System.Drawing.Size(903, 691);
             this.panel2.TabIndex = 2;
             // 
-            // label1
+            // btnAddPoint
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Latitude";
+            this.btnAddPoint.Location = new System.Drawing.Point(27, 355);
+            this.btnAddPoint.Name = "btnAddPoint";
+            this.btnAddPoint.Size = new System.Drawing.Size(136, 37);
+            this.btnAddPoint.TabIndex = 6;
+            this.btnAddPoint.Text = "Add point";
+            this.btnAddPoint.UseVisualStyleBackColor = true;
+            this.btnAddPoint.Click += new System.EventHandler(this.btnAddPoint_Click);
             // 
-            // txtbxLatitude
+            // btnGetRoute
             // 
-            this.txtbxLatitude.Location = new System.Drawing.Point(12, 54);
-            this.txtbxLatitude.Name = "txtbxLatitude";
-            this.txtbxLatitude.Size = new System.Drawing.Size(184, 27);
-            this.txtbxLatitude.TabIndex = 2;
+            this.btnGetRoute.Location = new System.Drawing.Point(27, 424);
+            this.btnGetRoute.Name = "btnGetRoute";
+            this.btnGetRoute.Size = new System.Drawing.Size(136, 37);
+            this.btnGetRoute.TabIndex = 7;
+            this.btnGetRoute.Text = "Get route";
+            this.btnGetRoute.UseVisualStyleBackColor = true;
+            this.btnGetRoute.Click += new System.EventHandler(this.btnGetRoute_Click);
             // 
-            // txtbxLongitude
+            // btnClear
             // 
-            this.txtbxLongitude.Location = new System.Drawing.Point(9, 132);
-            this.txtbxLongitude.Name = "txtbxLongitude";
-            this.txtbxLongitude.Size = new System.Drawing.Size(184, 27);
-            this.txtbxLongitude.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(9, 101);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 28);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Longitude";
-            // 
-            // btnLoadIntoMap
-            // 
-            this.btnLoadIntoMap.Location = new System.Drawing.Point(27, 219);
-            this.btnLoadIntoMap.Name = "btnLoadIntoMap";
-            this.btnLoadIntoMap.Size = new System.Drawing.Size(136, 37);
-            this.btnLoadIntoMap.TabIndex = 5;
-            this.btnLoadIntoMap.Text = "Load";
-            this.btnLoadIntoMap.UseVisualStyleBackColor = true;
-            this.btnLoadIntoMap.Click += new System.EventHandler(this.btnLoadIntoMap_Click);
+            this.btnClear.Location = new System.Drawing.Point(124, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(69, 37);
+            this.btnClear.TabIndex = 8;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // Form1
             // 
@@ -152,6 +188,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -170,5 +207,8 @@
         private Label label2;
         private TextBox txtbxLatitude;
         private Label label1;
+        private Button btnClear;
+        private Button btnGetRoute;
+        private Button btnAddPoint;
     }
 }
