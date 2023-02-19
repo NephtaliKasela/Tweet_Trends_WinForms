@@ -11,7 +11,7 @@
 
         public Tweet()
         {
-            Coordinates = new Geographic_Coordinates();
+            this.Coordinates = new Geographic_Coordinates();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace BusinessLogic.Operations
 
                 PointLatLng points = new PointLatLng(t.Coordinates.Latitude, t.Coordinates.Longitude);
                 // Normal marker
-                GMapMarker marker = new GMarkerGoogle(points, GMarkerGoogleType.red);
+                GMapMarker marker = new GMarkerGoogle(points, GMarkerGoogleType.lightblue_dot);
 
                 // Create an Overlay
                 GMapOverlay markers = new GMapOverlay("markers");

@@ -12,12 +12,14 @@ namespace DataAccess
         List<Sentiment> sentiments = new List<Sentiment>();
         public List<Sentiment> ReadSentiments(string path)
         {
+            // Open the file and get read all data
             StreamReader reader = new StreamReader(path);
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
                 string[] details = line.Split(',');
 
+                // Add the word and its value to the list of sentiments
                 if (details.Length >= 2)
                 {
                     Sentiment sentmt = new Sentiment();
@@ -29,7 +31,6 @@ namespace DataAccess
                         sentiments.Add(sentmt);
                     }
                     catch { }
-                    //Console.WriteLine($"{details[0]} = {details[1]}");
                 }
             }
             return sentiments;

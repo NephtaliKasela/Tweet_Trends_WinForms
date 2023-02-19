@@ -36,6 +36,7 @@ namespace DataAccess
                         }
                     }
 
+                    // Add the tweet to the list of tweets
                     try
                     {
                         twt.Coordinates.Latitude = Convert.ToDouble(cordinates[0]);
@@ -47,17 +48,6 @@ namespace DataAccess
                         tweets.Add(twt);
                     }
                     catch { }
-
-                    //Console.WriteLine($"{twt.Latitude}");
-                    //Console.WriteLine($"{twt.Longitude}");
-                    //Console.WriteLine($"{twt.Date}");
-                    //Console.WriteLine($"{twt.Time}");
-                    //foreach (string s in twt.Message)
-                    //{
-                    //    Console.WriteLine($"{s}");
-                    //}
-
-                    //Console.WriteLine($"-------------------------------\n");
                 }
             }
             return tweets;

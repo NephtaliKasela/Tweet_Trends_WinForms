@@ -15,20 +15,20 @@ namespace DataAccess
         List<State> states = new List<State>();
         public List<State> Read_States_Coordinates(string path)
         {
+            // Open the Json file and read all data
             string strJsonFile = File.ReadAllText(path);
             var states_coordinates = JsonConvert.DeserializeObject<IDictionary>(strJsonFile);
 
+            // Get the state name and its coordinates into the dictionary
             foreach (DictionaryEntry nameAndValues in states_coordinates)
             {
                 State state = new State();
                 state.Name = nameAndValues.Key.ToString();
 
-                //Console.WriteLine($"{dic.Key}");
                 string str = nameAndValues.Value.ToString();
                 var coordinates = JsonConvert.DeserializeObject<IList>(str);
                 foreach (IList coord in coordinates)
                 {
-                    //Console.WriteLine($"--{coord.Count}--");
                     foreach (IList latitudeAndLongitude in coord)
                     {
                         // Check if the length of the list is equal to 2
@@ -39,12 +39,8 @@ namespace DataAccess
                             geoCoordinates.Latitude = Convert.ToDouble(latitudeAndLongitude[0].ToString());
                             geoCoordinates.Longitude = Convert.ToDouble(latitudeAndLongitude[1].ToString());
                             state.Coordinates.Add(geoCoordinates);
-
-                            //Console.WriteLine($"--{latitudeAndLongitude.Count}--");
-                            //Console.WriteLine($"{latitudeAndLongitude}");
                         }
                     }
-                    //Console.WriteLine($"----------------");
                 }
                 states.Add(state);
             }

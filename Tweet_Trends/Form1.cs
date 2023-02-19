@@ -19,48 +19,35 @@ namespace Tweet_Trends
         public void Test()
         {
             listBox1.Items.Add("Hello World!");
+
+            // Get all tweets
             listBox1.Items.Add("Get tweets starts...");
             Tweet_Repository Tweets = new Tweet_Repository();
-            List<Tweet> twt = Tweets.ReadTweets("family_tweets2014.txt");
+            List<Tweet> twt = Tweets.ReadTweets("Tweets/movie_tweets2014.txt");
             listBox1.Items.Add(twt.Count.ToString());
             listBox1.Items.Add("Get tweets ends...");
 
+            // Get all sentiments
             listBox1.Items.Add("Get sentiment starts...");
             Sentiment_Repository sentiments = new Sentiment_Repository();
-            List<Sentiment> sentmt = sentiments.ReadSentiments("sentiments.csv");
+            List<Sentiment> sentmt = sentiments.ReadSentiments("Sentiments/sentiments.csv");
             listBox1.Items.Add(sentmt.Count.ToString());
             listBox1.Items.Add("Get sentiment ends...");
 
+            // Check if a message contains a sentiment
             listBox1.Items.Add("Check if sentiment starts...");
             Check_Sentiment chkSentiment = new Check_Sentiment();
             chkSentiment.Check(twt, sentmt);
             listBox1.Items.Add("Check if sentiment ends...");
 
-            //foreach (Tweet t in twt)
-            //{
-            //    //Console.WriteLine($"{t.Sentiment}");
-            //    listBox1.Items.Add(t.Sentiment.ToString());
-            //}
-
-
+            // Get all states
             listBox1.Items.Add("Get States_Coordinates starts...");
             States_Coordinates_Repository coor = new States_Coordinates_Repository();
-            List<State> states = coor.Read_States_Coordinates("states.json");
+            List<State> states = coor.Read_States_Coordinates("States/states.json");
             listBox1.Items.Add(states.Count.ToString());
             listBox1.Items.Add("Get States_Coordinates ends...");
 
-            //foreach(State st in states)
-            //{
-            //    Console.WriteLine($"{st.Name}");
-            //    foreach(Geographic_Coordinates geoc in st.Coordinates)
-            //    {
-            //        Console.WriteLine($"{geoc.Latitude}");
-            //        Console.WriteLine($"{geoc.Longitude}");
-            //        Console.WriteLine();
-            //    }
-            //    Console.WriteLine($"-------------------------");
-            //}
-
+            // Check the location of the tweet : Find the state name where the tweet was tweeted
             listBox1.Items.Add("Check location of tweet starts...");
             Check_Location_of_Tweet chkL = new Check_Location_of_Tweet();
             chkL.Check_Location(twt, states, listBox1);
@@ -81,7 +68,7 @@ namespace Tweet_Trends
             gmcMap.MapProvider = GMapProviders.GoogleMap;
             double lat = Convert.ToDouble(txtbxLatitude.Text); 
             double longt = Convert.ToDouble(txtbxLongitude.Text);
-            //gmcMap.Position = new GMap.NET.PointLatLng(lat, longt);
+
             gmcMap.Position = new PointLatLng(lat, longt);
             gmcMap.MinZoom = 5;       // Minimum zoom level
             gmcMap.MaxZoom = 100;     // Maximum zoom level

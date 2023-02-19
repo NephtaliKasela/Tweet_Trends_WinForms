@@ -13,7 +13,7 @@ namespace BusinessLogic
 
         public State()
         {
-            Coordinates = new List<Geographic_Coordinates>();
+            this.Coordinates = new List<Geographic_Coordinates>();
         }
     }
 }
