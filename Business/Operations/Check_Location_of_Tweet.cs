@@ -8,26 +8,30 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Operations
 {
-    internal class Check_Location_of_Tweet
+    public class Check_Location_of_Tweet
     {
-        public void Check_Location(List<Tweet> tweets, List<State> states)
+        public int count = 0;
+        public void Check_Location(List<Tweet> tweets, List<State> states, ListBox box)
         {
             foreach(Tweet tweet in tweets)
             {
-                IsInside(tweet, states);
+                IsInside(tweet, states, box);
             }
         }
 
-        private void IsInside(Tweet tweet, List<State> states)
+        private void IsInside(Tweet tweet, List<State> states, ListBox box)
         {
+            PointLatLng point = new PointLatLng(tweet.Coordinates.Latitude, tweet.Coordinates.Longitude);
             foreach (State state in states)
             {
-                PointLatLng point = new PointLatLng(tweet.Coordinates.Latitude, tweet.Coordinates.Longitude);
-
                 var polygon = Polygon(state);
                 if(polygon.IsInside(point))
                 {
                     tweet.Location = state.Name;
+
+                    count += 1;
+                    box.Items.Add(count.ToString());
+                    Console.WriteLine(count.ToString());
                 }
             }
         }

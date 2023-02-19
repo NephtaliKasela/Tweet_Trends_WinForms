@@ -30,6 +30,7 @@
         {
             this.gmcMap = new GMap.NET.WindowsForms.GMapControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddPolygon = new System.Windows.Forms.Button();
             this.lblDistance = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnGetRoute = new System.Windows.Forms.Button();
@@ -41,7 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddPolygon = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnInfo);
             this.panel1.Controls.Add(this.btnAddPolygon);
             this.panel1.Controls.Add(this.lblDistance);
             this.panel1.Controls.Add(this.btnClear);
@@ -91,6 +93,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(320, 691);
             this.panel1.TabIndex = 1;
+            // 
+            // btnAddPolygon
+            // 
+            this.btnAddPolygon.Location = new System.Drawing.Point(9, 432);
+            this.btnAddPolygon.Name = "btnAddPolygon";
+            this.btnAddPolygon.Size = new System.Drawing.Size(136, 37);
+            this.btnAddPolygon.TabIndex = 10;
+            this.btnAddPolygon.Text = "Delimit";
+            this.btnAddPolygon.UseVisualStyleBackColor = true;
+            this.btnAddPolygon.Click += new System.EventHandler(this.btnAddPolygon_Click);
             // 
             // lblDistance
             // 
@@ -178,9 +190,9 @@
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(0, 547);
+            this.listBox1.Location = new System.Drawing.Point(0, 487);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(320, 144);
+            this.listBox1.Size = new System.Drawing.Size(320, 204);
             this.listBox1.TabIndex = 0;
             // 
             // panel2
@@ -192,15 +204,15 @@
             this.panel2.Size = new System.Drawing.Size(785, 691);
             this.panel2.TabIndex = 2;
             // 
-            // btnAddPolygon
+            // btnInfo
             // 
-            this.btnAddPolygon.Location = new System.Drawing.Point(9, 432);
-            this.btnAddPolygon.Name = "btnAddPolygon";
-            this.btnAddPolygon.Size = new System.Drawing.Size(136, 37);
-            this.btnAddPolygon.TabIndex = 10;
-            this.btnAddPolygon.Text = "Delimit";
-            this.btnAddPolygon.UseVisualStyleBackColor = true;
-            this.btnAddPolygon.Click += new System.EventHandler(this.btnAddPolygon_Click);
+            this.btnInfo.Location = new System.Drawing.Point(178, 444);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(136, 37);
+            this.btnInfo.TabIndex = 11;
+            this.btnInfo.Text = "Info";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
             // Form1
             // 
@@ -235,5 +247,6 @@
         private Button btnAddPoint;
         private Label lblDistance;
         private Button btnAddPolygon;
+        private Button btnInfo;
     }
 }

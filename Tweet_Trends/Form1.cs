@@ -4,6 +4,7 @@ using GMap.NET.MapProviders;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using BusinessLogic.Operations;
 
 namespace Tweet_Trends
 {
@@ -13,36 +14,40 @@ namespace Tweet_Trends
         public Form1()
         {
             InitializeComponent();
-            //Test();
-            
         }
 
         public void Test()
         {
-            //Console.WriteLine("Hello World!");
             listBox1.Items.Add("Hello World!");
+            listBox1.Items.Add("Get tweets starts...");
             Tweet_Repository Tweets = new Tweet_Repository();
             List<Tweet> twt = Tweets.ReadTweets("family_tweets2014.txt");
-            //Console.WriteLine($"{twt.Count}");
-            //Console.WriteLine($"{twt[0].Coordinates.Latitude}");
-            //Console.WriteLine($"{twt[0].Coordinates.Longitude}");
+            listBox1.Items.Add(twt.Count.ToString());
+            listBox1.Items.Add("Get tweets ends...");
 
+            listBox1.Items.Add("Get sentiment starts...");
             Sentiment_Repository sentiments = new Sentiment_Repository();
             List<Sentiment> sentmt = sentiments.ReadSentiments("sentiments.csv");
-            //Console.WriteLine($"{sentmt.Count}");
             listBox1.Items.Add(sentmt.Count.ToString());
+            listBox1.Items.Add("Get sentiment ends...");
 
+            listBox1.Items.Add("Check if sentiment starts...");
             Check_Sentiment chkSentiment = new Check_Sentiment();
             chkSentiment.Check(twt, sentmt);
+            listBox1.Items.Add("Check if sentiment ends...");
 
-            foreach (Tweet t in twt)
-            {
-                //Console.WriteLine($"{t.Sentiment}");
-                listBox1.Items.Add(t.Sentiment.ToString());
-            }
+            //foreach (Tweet t in twt)
+            //{
+            //    //Console.WriteLine($"{t.Sentiment}");
+            //    listBox1.Items.Add(t.Sentiment.ToString());
+            //}
 
-            //States_Coordinates_Repository coor = new States_Coordinates_Repository();
-            //List<State> states = coor.Read_States_Coordinates("states.json");
+
+            listBox1.Items.Add("Get States_Coordinates starts...");
+            States_Coordinates_Repository coor = new States_Coordinates_Repository();
+            List<State> states = coor.Read_States_Coordinates("states.json");
+            listBox1.Items.Add(states.Count.ToString());
+            listBox1.Items.Add("Get States_Coordinates ends...");
 
             //foreach(State st in states)
             //{
@@ -55,6 +60,48 @@ namespace Tweet_Trends
             //    }
             //    Console.WriteLine($"-------------------------");
             //}
+
+            listBox1.Items.Add("Check location of tweet starts...");
+            Check_Location_of_Tweet chkL = new Check_Location_of_Tweet();
+            chkL.Check_Location(twt, states, listBox1);
+            listBox1.Items.Add("Check location of tweet ends...");
+
+            listBox1.Items.Add(" ");
+
+            // Print location of tweets
+            listBox1.Items.Add("Print location of tweet starts...");
+
+            gmcMap.DragButton = MouseButtons.Left;
+            gmcMap.MapProvider = GMapProviders.GoogleMap;
+
+            foreach (Tweet t in twt)
+            {
+                gmcMap.Position = new PointLatLng(t.Coordinates.Latitude, t.Coordinates.Longitude);
+                gmcMap.MinZoom = 5;       // Minimum zoom level
+                gmcMap.MaxZoom = 100;     // Maximum zoom level
+                gmcMap.Zoom = 10;         // Current zoom level
+
+                PointLatLng points = new PointLatLng(t.Coordinates.Latitude, t.Coordinates.Longitude);
+                // Normal marker
+                GMapMarker marker = new GMarkerGoogle(points, GMarkerGoogleType.red);
+
+                // Create an Overlay
+                GMapOverlay markers = new GMapOverlay("markers");
+
+                // Add all available markers to that Overlay
+                markers.Markers.Add(marker);
+
+                // Cover map with Overlay
+                gmcMap.Overlays.Add(markers);
+            }
+
+            
+
+            
+
+            
+            
+            listBox1.Items.Add("Print location of tweet ends...");
         }
 
         private void btnLoadIntoMap_Click(object sender, EventArgs e)
@@ -129,8 +176,11 @@ namespace Tweet_Trends
             var polygons = new GMapOverlay("polygons");
             polygons.Polygons.Add(polygon);
             gmcMap.Overlays.Add(polygons);
+        }
 
-
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            Test();
         }
     }
 }
