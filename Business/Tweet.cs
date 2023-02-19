@@ -2,6 +2,7 @@
 {
     public class Tweet
     {
+        public string Location { get; set; }
         public Geographic_Coordinates Coordinates { get; set; }
         public string Date { get; set; }
         public string Time { get; set; }
