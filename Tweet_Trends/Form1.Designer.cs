@@ -30,6 +30,10 @@
         {
             this.gmcMap = new GMap.NET.WindowsForms.GMapControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblDistance = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnGetRoute = new System.Windows.Forms.Button();
+            this.btnAddPoint = new System.Windows.Forms.Button();
             this.btnLoadIntoMap = new System.Windows.Forms.Button();
             this.txtbxLongitude = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,9 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddPoint = new System.Windows.Forms.Button();
-            this.btnGetRoute = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.btnAddPolygon = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -67,12 +69,14 @@
             this.gmcMap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmcMap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmcMap.ShowTileGridLines = false;
-            this.gmcMap.Size = new System.Drawing.Size(903, 691);
+            this.gmcMap.Size = new System.Drawing.Size(785, 691);
             this.gmcMap.TabIndex = 0;
             this.gmcMap.Zoom = 0D;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAddPolygon);
+            this.panel1.Controls.Add(this.lblDistance);
             this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.btnGetRoute);
             this.panel1.Controls.Add(this.btnAddPoint);
@@ -85,12 +89,51 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(202, 691);
+            this.panel1.Size = new System.Drawing.Size(320, 691);
             this.panel1.TabIndex = 1;
+            // 
+            // lblDistance
+            // 
+            this.lblDistance.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDistance.Location = new System.Drawing.Point(167, 376);
+            this.lblDistance.Name = "lblDistance";
+            this.lblDistance.Size = new System.Drawing.Size(131, 28);
+            this.lblDistance.TabIndex = 9;
+            this.lblDistance.Text = "Distance";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(229, 12);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(69, 37);
+            this.btnClear.TabIndex = 8;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnGetRoute
+            // 
+            this.btnGetRoute.Location = new System.Drawing.Point(10, 367);
+            this.btnGetRoute.Name = "btnGetRoute";
+            this.btnGetRoute.Size = new System.Drawing.Size(136, 37);
+            this.btnGetRoute.TabIndex = 7;
+            this.btnGetRoute.Text = "Get route";
+            this.btnGetRoute.UseVisualStyleBackColor = true;
+            this.btnGetRoute.Click += new System.EventHandler(this.btnGetRoute_Click);
+            // 
+            // btnAddPoint
+            // 
+            this.btnAddPoint.Location = new System.Drawing.Point(10, 320);
+            this.btnAddPoint.Name = "btnAddPoint";
+            this.btnAddPoint.Size = new System.Drawing.Size(136, 37);
+            this.btnAddPoint.TabIndex = 6;
+            this.btnAddPoint.Text = "Add point";
+            this.btnAddPoint.UseVisualStyleBackColor = true;
+            this.btnAddPoint.Click += new System.EventHandler(this.btnAddPoint_Click);
             // 
             // btnLoadIntoMap
             // 
-            this.btnLoadIntoMap.Location = new System.Drawing.Point(27, 248);
+            this.btnLoadIntoMap.Location = new System.Drawing.Point(27, 215);
             this.btnLoadIntoMap.Name = "btnLoadIntoMap";
             this.btnLoadIntoMap.Size = new System.Drawing.Size(136, 37);
             this.btnLoadIntoMap.TabIndex = 5;
@@ -137,47 +180,27 @@
             this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(0, 547);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(202, 144);
+            this.listBox1.Size = new System.Drawing.Size(320, 144);
             this.listBox1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.gmcMap);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(202, 0);
+            this.panel2.Location = new System.Drawing.Point(320, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(903, 691);
+            this.panel2.Size = new System.Drawing.Size(785, 691);
             this.panel2.TabIndex = 2;
             // 
-            // btnAddPoint
+            // btnAddPolygon
             // 
-            this.btnAddPoint.Location = new System.Drawing.Point(27, 355);
-            this.btnAddPoint.Name = "btnAddPoint";
-            this.btnAddPoint.Size = new System.Drawing.Size(136, 37);
-            this.btnAddPoint.TabIndex = 6;
-            this.btnAddPoint.Text = "Add point";
-            this.btnAddPoint.UseVisualStyleBackColor = true;
-            this.btnAddPoint.Click += new System.EventHandler(this.btnAddPoint_Click);
-            // 
-            // btnGetRoute
-            // 
-            this.btnGetRoute.Location = new System.Drawing.Point(27, 424);
-            this.btnGetRoute.Name = "btnGetRoute";
-            this.btnGetRoute.Size = new System.Drawing.Size(136, 37);
-            this.btnGetRoute.TabIndex = 7;
-            this.btnGetRoute.Text = "Get route";
-            this.btnGetRoute.UseVisualStyleBackColor = true;
-            this.btnGetRoute.Click += new System.EventHandler(this.btnGetRoute_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(124, 12);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(69, 37);
-            this.btnClear.TabIndex = 8;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnAddPolygon.Location = new System.Drawing.Point(9, 432);
+            this.btnAddPolygon.Name = "btnAddPolygon";
+            this.btnAddPolygon.Size = new System.Drawing.Size(136, 37);
+            this.btnAddPolygon.TabIndex = 10;
+            this.btnAddPolygon.Text = "Delimit";
+            this.btnAddPolygon.UseVisualStyleBackColor = true;
+            this.btnAddPolygon.Click += new System.EventHandler(this.btnAddPolygon_Click);
             // 
             // Form1
             // 
@@ -210,5 +233,7 @@
         private Button btnClear;
         private Button btnGetRoute;
         private Button btnAddPoint;
+        private Label lblDistance;
+        private Button btnAddPolygon;
     }
 }

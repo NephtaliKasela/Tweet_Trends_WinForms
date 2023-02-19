@@ -103,17 +103,34 @@ namespace Tweet_Trends
 
         private void btnGetRoute_Click(object sender, EventArgs e)
         {
-            var route = GoogleMapProvider.Instance.GetRoute(_points[0], _points[1], true, true, 14);
+            var route = GoogleMapProvider.Instance.GetRoute(_points[0], _points[1], false, false, 14);
             var r = new GMapRoute(route.Points, "My route") { Stroke = new Pen(Color.Red, 5)};
 
             var routes = new GMapOverlay("routes");
             routes.Routes.Add(r);
             gmcMap.Overlays.Add(routes);
+
+            // get the distance
+            lblDistance.Text = route.Distance + " Km";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             _points.Clear();
+        }
+
+        private void btnAddPolygon_Click(object sender, EventArgs e)
+        {
+            var polygon = new GMapPolygon(_points, "My area")
+            {
+                Stroke = new Pen(Color.DarkViolet, 2),
+                Fill = new SolidBrush(Color.BurlyWood),
+            };
+            var polygons = new GMapOverlay("polygons");
+            polygons.Polygons.Add(polygon);
+            gmcMap.Overlays.Add(polygons);
+
+
         }
     }
 }
