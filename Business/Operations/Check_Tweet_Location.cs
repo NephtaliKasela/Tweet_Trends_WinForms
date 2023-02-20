@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Operations
 {
-    public class Check_Location_of_Tweet
+    public class Check_Tweet_Location
     {
         public int count = 0;
         public void Check_Location(List<Tweet> tweets, List<State> states, ListBox box)

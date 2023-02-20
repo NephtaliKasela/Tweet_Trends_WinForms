@@ -49,7 +49,7 @@ namespace Tweet_Trends
 
             // Check the location of the tweet : Find the state name where the tweet was tweeted
             listBox1.Items.Add("Check location of tweet starts...");
-            Check_Location_of_Tweet chkL = new Check_Location_of_Tweet();
+            Check_Tweet_Location chkL = new Check_Tweet_Location();
             chkL.Check_Location(twt, states, listBox1);
             listBox1.Items.Add("Check location of tweet ends...");
 
@@ -57,9 +57,15 @@ namespace Tweet_Trends
 
             // Print location of tweets
             listBox1.Items.Add("Print location of tweet starts...");
-            Print_Location_of_Tweet printL = new Print_Location_of_Tweet();
+            Print_Tweet_Location printL = new Print_Tweet_Location();
             printL.Print_Location(twt, gmcMap);
             listBox1.Items.Add("Print location of tweet ends...");
+
+            // Print location of state
+            listBox1.Items.Add("Print location of state starts...");
+            print_State_Location stateL = new print_State_Location();
+            stateL.Print_Location(states, gmcMap);
+            listBox1.Items.Add("Print location of state ends...");
         }
 
         private void btnLoadIntoMap_Click(object sender, EventArgs e)
