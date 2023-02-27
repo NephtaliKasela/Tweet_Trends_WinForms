@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using BusinessLogic;
+using BusinessLogic.Interfaces;
 
 namespace DataAccess
 {
-    public class States_Coordinates_Repository
+    public class States_Coordinates_Repository : IState_Repository
     {
         List<State> states = new List<State>();
         public List<State> Read_States_Coordinates(string path)

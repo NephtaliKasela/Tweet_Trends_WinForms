@@ -9,6 +9,8 @@ namespace BusinessLogic
     public class State
     {
         public string Name { get; set; }
+        public string Stusab { get; set; }
+        public int Rank { get; set; }
         public List<Geographic_Coordinates> Coordinates { get; set; }
 
         public State()
