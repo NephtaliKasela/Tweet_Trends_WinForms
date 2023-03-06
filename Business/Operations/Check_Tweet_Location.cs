@@ -19,6 +19,7 @@ namespace BusinessLogic.Operations
             }
         }
 
+        // Check if the tweet belongs to a state
         private void IsInside(Tweet tweet, List<State> states, ListBox box)
         {
             PointLatLng point = new PointLatLng(tweet.Coordinates.Latitude, tweet.Coordinates.Longitude);
@@ -35,7 +36,8 @@ namespace BusinessLogic.Operations
                 }
             }
         }
-
+         
+        // Build a polygon
         private GMapPolygon Polygon(State state)
         {
             List<PointLatLng> points = new List<PointLatLng>();
